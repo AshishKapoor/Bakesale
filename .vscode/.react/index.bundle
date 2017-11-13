@@ -52227,56 +52227,57 @@ var DealItem = _wrapComponent('DealItem')((_temp = _class = function (_Component
 
       return _react3.default.createElement(
         _reactNative.View,
-        { style: styles.list, __source: {
+        { style: styles.deal, __source: {
             fileName: _jsxFileName,
             lineNumber: 18
           }
         },
-        _react3.default.createElement(_reactNative.Image, {
-          source: { uri: this.props.deal.media[0] },
-          style: styles.image,
-          __source: {
+        _react3.default.createElement(_reactNative.Image, { source: { uri: this.props.deal.media[0] }, style: styles.image, __source: {
             fileName: _jsxFileName,
             lineNumber: 19
           }
         }),
         _react3.default.createElement(
           _reactNative.View,
-          {
-            __source: {
+          { style: styles.info, __source: {
               fileName: _jsxFileName,
-              lineNumber: 23
+              lineNumber: 20
             }
           },
           _react3.default.createElement(
             _reactNative.Text,
-            {
-              __source: {
+            { style: styles.title, __source: {
                 fileName: _jsxFileName,
-                lineNumber: 24
+                lineNumber: 21
               }
             },
             deal.title
           ),
           _react3.default.createElement(
-            _reactNative.Text,
-            {
-              __source: {
+            _reactNative.View,
+            { style: styles.footer, __source: {
                 fileName: _jsxFileName,
-                lineNumber: 25
+                lineNumber: 22
               }
             },
-            (0, _util.priceDisplay)(deal.price)
-          ),
-          _react3.default.createElement(
-            _reactNative.Text,
-            {
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 26
-              }
-            },
-            deal.cause.name
+            _react3.default.createElement(
+              _reactNative.Text,
+              { style: styles.price, __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 23
+                }
+              },
+              (0, _util.priceDisplay)(deal.price)
+            ),
+            _react3.default.createElement(
+              _reactNative.Text,
+              { style: styles.cause, __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 24
+                }
+              },
+              deal.cause.name
+            )
           )
         )
       );
@@ -52289,9 +52290,36 @@ var DealItem = _wrapComponent('DealItem')((_temp = _class = function (_Component
 }, _temp));
 
 var styles = _reactNative.StyleSheet.create({
+  deal: {
+    marginHorizontal: 12,
+    marginTop: 12
+  },
   image: {
     width: '100%',
-    height: 150
+    height: 150,
+    backgroundColor: '#ccc'
+  },
+  info: {
+    padding: 10,
+    backgroundColor: '#fff',
+    borderColor: '#bbb',
+    borderWidth: 1,
+    borderTopWidth: 0
+  },
+  title: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginBottom: 5
+  },
+  footer: {
+    flexDirection: 'row'
+  },
+  cause: {
+    flex: 2
+  },
+  price: {
+    flex: 1,
+    textAlign: 'right'
   }
 });
 
