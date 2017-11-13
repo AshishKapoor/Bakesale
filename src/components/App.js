@@ -2,11 +2,14 @@ import React, { Component } from 'react'
 import {
   View, 
   Text, 
-  StyleSheet
+  StyleSheet,
+  TextInput,
 } from 'react-native'
+
 import ajax from '../ajax'
 import DealList from './DealList'
 import DealDetail from './DealDetail'
+import SearchBar from './SearchBar'
 
 export default class App extends Component {
 
@@ -41,10 +44,15 @@ export default class App extends Component {
       return <DealDetail initialDealData={this.currentDeal()} onBack={this.unsetCurrentDeal}/>
     }
     if (this.state.deals.length > 0) {
-      return <DealList deals={this.state.deals} onItemPress={this.setCurrentDeal}/>
+      return (
+        <View style={[styles.container, styles.main]}>
+          <SearchBar />
+          <DealList deals={this.state.deals} onItemPress={this.setCurrentDeal}/>
+        </View>
+      );
     }
     return (
-      <View style={styles.container}>
+      <View style={[styles.container, styles.main]}>
         <Text style={styles.header}>Bakesale</Text>
       </View>
     )
@@ -56,6 +64,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  main: {
+    marginTop: 50
   },
   header: {
     fontSize: 40,
