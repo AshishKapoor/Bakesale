@@ -1,23 +1,35 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import {
   View, 
   Text, 
   StyleSheet
-} from 'react-native';
+} from 'react-native'
+import ajax from '../ajax'
+import DealList from './DealList'
 
 export default class App extends Component {
+
+  state = {
+    deals: [],
+
+  }
+
+  async componentDidMount(){
+    const deals = await ajax.fetchInitialDeals();
+    this.setState( (prevState) => {
+      return {deals}
+    })
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.header}>Bakesale App</Text>
+      {this.state.deals.length > 0 ? 
+      (<DealList deals={this.state.deals} />)
+      : ( <Text style={styles.header}>Bakesale</Text>
+      )}
       </View>
-    );
+    )
   }
 }
 

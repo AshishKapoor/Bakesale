@@ -51884,6 +51884,14 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _reactNative = require(12            ); // 12 = react-native
 
+var _ajax = require(494      ); // 494 = ../ajax
+
+var _ajax2 = _interopRequireDefault(_ajax);
+
+var _DealList = require(495         ); // 495 = ./DealList
+
+var _DealList2 = _interopRequireDefault(_DealList);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -51915,29 +51923,69 @@ var App = _wrapComponent('App')(function (_Component) {
   _inherits(App, _Component);
 
   function App() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
     _classCallCheck(this, App);
 
-    return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = App.__proto__ || Object.getPrototypeOf(App)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+      deals: []
+
+    }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
   _createClass(App, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var deals;
+      return regeneratorRuntime.async(function componentDidMount$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.next = 2;
+              return regeneratorRuntime.awrap(_ajax2.default.fetchInitialDeals());
+
+            case 2:
+              deals = _context.sent;
+
+              this.setState(function (prevState) {
+                return { deals: deals };
+              });
+
+            case 4:
+            case 'end':
+              return _context.stop();
+          }
+        }
+      }, null, this);
+    }
+  }, {
     key: 'render',
     value: function render() {
       return _react3.default.createElement(
         _reactNative.View,
         { style: styles.container, __source: {
             fileName: _jsxFileName,
-            lineNumber: 17
+            lineNumber: 26
           }
         },
-        _react3.default.createElement(
+        this.state.deals.length > 0 ? _react3.default.createElement(_DealList2.default, { deals: this.state.deals, __source: {
+            fileName: _jsxFileName,
+            lineNumber: 28
+          }
+        }) : _react3.default.createElement(
           _reactNative.Text,
           { style: styles.header, __source: {
               fileName: _jsxFileName,
-              lineNumber: 18
+              lineNumber: 29
             }
           },
-          'Bakesale App'
+          'Bakesale'
         )
       );
     }
@@ -51960,6 +52008,134 @@ var styles = _reactNative.StyleSheet.create({
   }
 });
 }, 493, null, "Bakesale/src/components/App.js");
+__d(/* Bakesale/src/ajax.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var apiHost = 'https://bakesaleforgood.com';
+
+exports.default = {
+  fetchInitialDeals: function fetchInitialDeals() {
+    var response, responseJson;
+    return regeneratorRuntime.async(function fetchInitialDeals$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            _context.prev = 0;
+            _context.next = 3;
+            return regeneratorRuntime.awrap(fetch(apiHost + '/api/deals'));
+
+          case 3:
+            response = _context.sent;
+            _context.next = 6;
+            return regeneratorRuntime.awrap(response.json());
+
+          case 6:
+            responseJson = _context.sent;
+            return _context.abrupt('return', responseJson);
+
+          case 10:
+            _context.prev = 10;
+            _context.t0 = _context['catch'](0);
+
+            console.error(_context.t0);
+
+          case 13:
+          case 'end':
+            return _context.stop();
+        }
+      }
+    }, null, this, [[0, 10]]);
+  }
+};
+}, 494, null, "Bakesale/src/ajax.js");
+__d(/* Bakesale/src/components/DealList.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react2 = require(35     ); // 35 = react
+
+var _react3 = _interopRequireDefault(_react2);
+
+var _index = require(127                                                    ); // 127 = ./../../node_modules/react-transform-hmr/lib/index.js
+
+var _index2 = _interopRequireDefault(_index);
+
+var _jsxFileName = '/Users/ashishkapoor/Developer/training/Bakesale/src/components/DealList.js';
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _reactNative = require(12            ); // 12 = react-native
+
+var _ajax = require(494      ); // 494 = ../ajax
+
+var _ajax2 = _interopRequireDefault(_ajax);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _components = {
+  DealList: {
+    displayName: 'DealList'
+  }
+};
+
+var _node_modulesReactTransformHmrLibIndexJs2 = (0, _index2.default)({
+  filename: '/Users/ashishkapoor/Developer/training/Bakesale/src/components/DealList.js',
+  components: _components,
+  locals: [module],
+  imports: [_react3.default]
+});
+
+function _wrapComponent(id) {
+  return function (Component) {
+    return _node_modulesReactTransformHmrLibIndexJs2(Component, id);
+  };
+}
+
+var DealList = _wrapComponent('DealList')(function (_Component) {
+  _inherits(DealList, _Component);
+
+  function DealList() {
+    _classCallCheck(this, DealList);
+
+    return _possibleConstructorReturn(this, (DealList.__proto__ || Object.getPrototypeOf(DealList)).apply(this, arguments));
+  }
+
+  _createClass(DealList, [{
+    key: 'render',
+    value: function render() {
+      return _react3.default.createElement(
+        _reactNative.View,
+        {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 12
+          }
+        },
+        _react3.default.createElement(
+          _reactNative.Text,
+          {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 13
+            }
+          },
+          'Deals...'
+        )
+      );
+    }
+  }]);
+
+  return DealList;
+}(_react2.Component));
+
+exports.default = DealList;
+}, 495, null, "Bakesale/src/components/DealList.js");
 ;require(50);
 ;require(0);
 //# sourceMappingURL=index.map
