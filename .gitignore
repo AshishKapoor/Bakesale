@@ -21,8 +21,8 @@ DerivedData
 *.ipa
 *.xcuserstate
 project.xcworkspace
-.vscode/.react/index.map
-.vscode/.react/index.bundle
+*.vscode/
+*.vscode/
 # Android/IntelliJ
 #
 build/

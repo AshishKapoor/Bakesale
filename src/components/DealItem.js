@@ -4,6 +4,7 @@ import {
   StyleSheet,
   Text,
   Image,
+  TouchableOpacity,
 } from 'react-native';
 import PropTypes from 'prop-types';
 import {priceDisplay} from '../components/util';
@@ -14,8 +15,11 @@ class DealItem extends Component {
   }
   render() {
     const {deal} = this.props;
+    handlePress = () => {
+      console.log('pressed')
+    }
     return (
-      <View style={styles.deal}>
+      <TouchableOpacity style={styles.deal} onPress={this.handlePress}>
         <Image source={{uri: this.props.deal.media[0]}} style={styles.image}/>
         <View style={styles.info}>
           <Text style={styles.title}>{deal.title}</Text>
@@ -24,7 +28,7 @@ class DealItem extends Component {
             <Text style={styles.price}>{priceDisplay(deal.price)}</Text>  
           </View>
         </View>
-      </View>
+      </TouchableOpacity>
     );
   }
 }
