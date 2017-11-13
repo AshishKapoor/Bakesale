@@ -1,0 +1,33 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Debug iOS",
+        "program": "${workspaceRoot}/.vscode/launchReactNative.js",
+        "type": "reactnative",
+        "request": "launch",
+        "platform": "ios",
+        "sourceMaps": true,
+        "outDir": "${workspaceRoot}/.vscode/.react",
+        "target": "iPhone 6"
+      },
+      {
+        "name": "Attach to packager",
+        "program": "${workspaceRoot}/.vscode/launchReactNative.js",
+        "type": "reactnative",
+        "request": "attach",
+        "sourceMaps": true,
+        "outDir": "${workspaceRoot}/.vscode/.react"
+      },
+      {
+        "name": "Debug in Exponent",
+        "program": "${workspaceRoot}/.vscode/launchReactNative.js",
+        "type": "reactnative",
+        "request": "launch",
+        "platform": "exponent",
+        "sourceMaps": true,
+        "outDir": "${workspaceRoot}/.vscode/.react"
+      }
+    ]
+  }
+  
