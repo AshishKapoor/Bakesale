@@ -5,6 +5,7 @@ import {
   Text,
   Image,
   TouchableOpacity,
+  ScrollView,
 } from 'react-native'
 import PropTypes from 'prop-types'
 
@@ -33,13 +34,11 @@ class DealDetail extends Component {
     const {deal} = this.state
     return (
       <View style={styles.deal}>
-        
         <TouchableOpacity onPress={this.props.onBack}>
           <Text style={styles.backButton}>Back</Text>
         </TouchableOpacity>
-
+      <ScrollView>
         <Image source={{uri: deal.media[0]}} style={styles.image}/>
-        
         <View style={styles.info}>
           <Text style={styles.title}>{deal.title}</Text>
           <View style={styles.footer}>
@@ -56,6 +55,7 @@ class DealDetail extends Component {
             <Text>{deal.description}</Text>
           </View>
         </View>
+        </ScrollView>
       </View>
     );
   }
