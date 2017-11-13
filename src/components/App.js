@@ -17,7 +17,13 @@ export default class App extends Component {
 
   setCurrentDeal = (dealId) => {
     this.setState({
-      currentDealId: dealId
+      currentDealId: dealId,
+    })
+  }
+
+  unsetCurrentDeal = (dealId) => {
+    this.setState({
+      currentDealId: null,
     })
   }
 
@@ -32,7 +38,7 @@ export default class App extends Component {
 
   render() {
     if (this.state.currentDealId) {
-      return <DealDetail initialDealData={this.currentDeal()}/>
+      return <DealDetail initialDealData={this.currentDeal()} onBack={this.unsetCurrentDeal}/>
     }
     if (this.state.deals.length > 0) {
       return <DealList deals={this.state.deals} onItemPress={this.setCurrentDeal}/>

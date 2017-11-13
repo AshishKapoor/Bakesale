@@ -4,6 +4,7 @@ import {
   StyleSheet,
   Text,
   Image,
+  TouchableOpacity,
 } from 'react-native'
 import PropTypes from 'prop-types'
 
@@ -13,6 +14,7 @@ import ajax from '../ajax'
 class DealDetail extends Component {
   static propTypes = {
     initialDealData: PropTypes.object.isRequired,
+    onPress: PropTypes.func.isRequired,
   }
   state = {
     deal: this.props.initialDealData,
@@ -31,22 +33,28 @@ class DealDetail extends Component {
     const {deal} = this.state
     return (
       <View style={styles.deal}>
+        
+        <TouchableOpacity onPress={this.props.onBack}>
+          <Text style={styles.backButton}>Back</Text>
+        </TouchableOpacity>
+
         <Image source={{uri: deal.media[0]}} style={styles.image}/>
+        
         <View style={styles.info}>
           <Text style={styles.title}>{deal.title}</Text>
           <View style={styles.footer}>
             <Text style={styles.cause}>{deal.cause.name}</Text>
             <Text style={styles.price}>{priceDisplay(deal.price)}</Text>
           </View>
-           <View style={{ paddingTop: 20 }}>
+          <View style={{ paddingTop: 20 }}>
             {deal.user && 
               (<View>
                 <Image source={{uri: deal.user.avatar}} style={styles.avatar}/>
                 <Text>{deal.user.name}</Text>
               </View>)
             }
+            <Text>{deal.description}</Text>
           </View>
-          <Text>{deal.description}</Text>
         </View>
       </View>
     );
@@ -88,6 +96,11 @@ const styles = StyleSheet.create({
   avatar: {
     width: 60,
     height: 60,
+  },
+  backButton: {
+    marginBottom: 10,
+    fontSize: 15,
+    color: 'blue'
   }
 })
 
