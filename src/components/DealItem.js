@@ -12,15 +12,16 @@ import {priceDisplay} from '../components/util';
 class DealItem extends Component {
   static propTypes = {
     deal: PropTypes.object.isRequired,
+    onPress:  PropTypes.func.isRequired,
+  }
+  handlePress = () => {
+    this.props.onPress(this.props.deal.key)
   }
   render() {
     const {deal} = this.props;
-    handlePress = () => {
-      console.log('pressed')
-    }
     return (
       <TouchableOpacity style={styles.deal} onPress={this.handlePress}>
-        <Image source={{uri: this.props.deal.media[0]}} style={styles.image}/>
+        <Image source={{uri: deal.media[0]}} style={styles.image}/>
         <View style={styles.info}>
           <Text style={styles.title}>{deal.title}</Text>
           <View style={styles.footer}>
