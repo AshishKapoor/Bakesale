@@ -1294,7 +1294,7 @@ babelHelpers.toConsumableArray = function (arr) {
 })(typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : this);
 __d(/* Bakesale/index.js */function(global, require, module, exports) {var _reactNative = require(12            ); // 12 = react-native
 
-var _App = require(488    ); // 488 = ./App
+var _App = require(493                   ); // 493 = ./src/components/App
 
 var _App2 = _interopRequireDefault(_App);
 
@@ -51866,7 +51866,7 @@ var _require = require(21           ), // 21 = ReactNative
 
 module.exports = __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.takeSnapshot;
 }, 487, null, "takeSnapshot");
-__d(/* Bakesale/App.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
+__d(/* Bakesale/src/components/App.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
@@ -51874,11 +51874,11 @@ var _react2 = require(35     ); // 35 = react
 
 var _react3 = _interopRequireDefault(_react2);
 
-var _index = require(127                                              ); // 127 = ./node_modules/react-transform-hmr/lib/index.js
+var _index = require(127                                                    ); // 127 = ./../../node_modules/react-transform-hmr/lib/index.js
 
 var _index2 = _interopRequireDefault(_index);
 
-var _jsxFileName = '/Users/ashishkapoor/Developer/training/Bakesale/App.js';
+var _jsxFileName = '/Users/ashishkapoor/Developer/training/Bakesale/src/components/App.js';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -51899,7 +51899,7 @@ var _components = {
 };
 
 var _node_modulesReactTransformHmrLibIndexJs2 = (0, _index2.default)({
-  filename: '/Users/ashishkapoor/Developer/training/Bakesale/App.js',
+  filename: '/Users/ashishkapoor/Developer/training/Bakesale/src/components/App.js',
   components: _components,
   locals: [module],
   imports: [_react3.default]
@@ -51923,22 +51923,21 @@ var App = _wrapComponent('App')(function (_Component) {
   _createClass(App, [{
     key: 'render',
     value: function render() {
-      console.log('works');
       return _react3.default.createElement(
         _reactNative.View,
-        { style: { flex: 1, marginHorizontal: 50 }, __source: {
+        { style: styles.container, __source: {
             fileName: _jsxFileName,
-            lineNumber: 14
+            lineNumber: 17
           }
         },
         _react3.default.createElement(
           _reactNative.Text,
-          { style: { textAlign: 'center', paddingTop: 30 }, __source: {
+          { style: styles.header, __source: {
               fileName: _jsxFileName,
-              lineNumber: 15
+              lineNumber: 18
             }
           },
-          'Placeholder'
+          'Bakesale App'
         )
       );
     }
@@ -51948,7 +51947,19 @@ var App = _wrapComponent('App')(function (_Component) {
 }(_react2.Component));
 
 exports.default = App;
-}, 488, null, "Bakesale/App.js");
+
+
+var styles = _reactNative.StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  header: {
+    fontSize: 40
+  }
+});
+}, 493, null, "Bakesale/src/components/App.js");
 ;require(50);
 ;require(0);
 //# sourceMappingURL=index.map
