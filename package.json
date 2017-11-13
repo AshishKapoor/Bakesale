@@ -9,6 +9,8 @@
 	"dependencies": {
 		"babel-cli": "^6.26.0",
 		"babel-preset-node6": "^11.0.0",
+		"install": "^0.10.1",
+		"prop-types": "^15.6.0",
 		"react": "16.0.0",
 		"react-native": "0.50.3"
 	},

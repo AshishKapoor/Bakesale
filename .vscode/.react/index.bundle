@@ -51935,7 +51935,6 @@ var App = _wrapComponent('App')(function (_Component) {
 
     return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = App.__proto__ || Object.getPrototypeOf(App)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
       deals: []
-
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
@@ -51953,9 +51952,7 @@ var App = _wrapComponent('App')(function (_Component) {
             case 2:
               deals = _context.sent;
 
-              this.setState(function (prevState) {
-                return { deals: deals };
-              });
+              this.setState({ deals: deals });
 
             case 4:
             case 'end':
@@ -51971,18 +51968,18 @@ var App = _wrapComponent('App')(function (_Component) {
         _reactNative.View,
         { style: styles.container, __source: {
             fileName: _jsxFileName,
-            lineNumber: 26
+            lineNumber: 23
           }
         },
         this.state.deals.length > 0 ? _react3.default.createElement(_DealList2.default, { deals: this.state.deals, __source: {
             fileName: _jsxFileName,
-            lineNumber: 28
+            lineNumber: 25
           }
         }) : _react3.default.createElement(
           _reactNative.Text,
           { style: styles.header, __source: {
               fileName: _jsxFileName,
-              lineNumber: 29
+              lineNumber: 26
             }
           },
           'Bakesale'
@@ -52060,15 +52057,21 @@ var _index = require(127                                                    ); /
 
 var _index2 = _interopRequireDefault(_index);
 
-var _jsxFileName = '/Users/ashishkapoor/Developer/training/Bakesale/src/components/DealList.js';
-
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _class,
+    _temp,
+    _jsxFileName = '/Users/ashishkapoor/Developer/training/Bakesale/src/components/DealList.js';
 
 var _reactNative = require(12            ); // 12 = react-native
 
 var _ajax = require(494      ); // 494 = ../ajax
 
 var _ajax2 = _interopRequireDefault(_ajax);
+
+var _propTypes = require(291         ); // 291 = prop-types
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -52097,7 +52100,7 @@ function _wrapComponent(id) {
   };
 }
 
-var DealList = _wrapComponent('DealList')(function (_Component) {
+var DealList = _wrapComponent('DealList')((_temp = _class = function (_Component) {
   _inherits(DealList, _Component);
 
   function DealList() {
@@ -52111,28 +52114,48 @@ var DealList = _wrapComponent('DealList')(function (_Component) {
     value: function render() {
       return _react3.default.createElement(
         _reactNative.View,
-        {
-          __source: {
+        { style: styles.list, __source: {
             fileName: _jsxFileName,
-            lineNumber: 12
+            lineNumber: 17
           }
         },
-        _react3.default.createElement(
-          _reactNative.Text,
-          {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 13
-            }
+        _react3.default.createElement(_reactNative.FlatList, {
+          data: this.props.deals,
+          renderItem: function renderItem(_ref) {
+            var item = _ref.item;
+            return _react3.default.createElement(
+              _reactNative.Text,
+              {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 23
+                }
+              },
+              item.title
+            );
           },
-          'Deals...'
-        )
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 21
+          }
+        })
       );
     }
   }]);
 
   return DealList;
-}(_react2.Component));
+}(_react2.Component), _class.propTypes = {
+  deals: _propTypes2.default.array.isRequired
+}, _temp));
+
+var styles = _reactNative.StyleSheet.create({
+  list: {
+    backgroundColor: '#eee',
+    flex: 1,
+    width: '100%',
+    paddingTop: 50
+  }
+});
 
 exports.default = DealList;
 }, 495, null, "Bakesale/src/components/DealList.js");

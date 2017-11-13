@@ -11,14 +11,11 @@ export default class App extends Component {
 
   state = {
     deals: [],
-
   }
 
   async componentDidMount(){
     const deals = await ajax.fetchInitialDeals();
-    this.setState( (prevState) => {
-      return {deals}
-    })
+    this.setState({deals})
   }
 
   render() {
