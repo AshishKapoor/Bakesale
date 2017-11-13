@@ -14,7 +14,7 @@ import ajax from '../ajax'
 class DealDetail extends Component {
   static propTypes = {
     initialDealData: PropTypes.object.isRequired,
-    onPress: PropTypes.func.isRequired,
+    onBack: PropTypes.func.isRequired,
   }
   state = {
     deal: this.props.initialDealData,
