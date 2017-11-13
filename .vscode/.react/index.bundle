@@ -52182,6 +52182,8 @@ var _propTypes = require(291         ); // 291 = prop-types
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
+var _util = require(497                 ); // 497 = ../components/util
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -52227,7 +52229,7 @@ var DealItem = _wrapComponent('DealItem')((_temp = _class = function (_Component
         _reactNative.View,
         { style: styles.list, __source: {
             fileName: _jsxFileName,
-            lineNumber: 17
+            lineNumber: 18
           }
         },
         _react3.default.createElement(_reactNative.Image, {
@@ -52235,7 +52237,7 @@ var DealItem = _wrapComponent('DealItem')((_temp = _class = function (_Component
           style: styles.image,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 18
+            lineNumber: 19
           }
         }),
         _react3.default.createElement(
@@ -52243,7 +52245,7 @@ var DealItem = _wrapComponent('DealItem')((_temp = _class = function (_Component
           {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 22
+              lineNumber: 23
             }
           },
           _react3.default.createElement(
@@ -52251,7 +52253,7 @@ var DealItem = _wrapComponent('DealItem')((_temp = _class = function (_Component
             {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 23
+                lineNumber: 24
               }
             },
             deal.title
@@ -52261,17 +52263,17 @@ var DealItem = _wrapComponent('DealItem')((_temp = _class = function (_Component
             {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 24
+                lineNumber: 25
               }
             },
-            deal.price
+            (0, _util.priceDisplay)(deal.price)
           ),
           _react3.default.createElement(
             _reactNative.Text,
             {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 25
+                lineNumber: 26
               }
             },
             deal.cause.name
@@ -52295,6 +52297,13 @@ var styles = _reactNative.StyleSheet.create({
 
 exports.default = DealItem;
 }, 496, null, "Bakesale/src/components/DealItem.js");
+__d(/* Bakesale/src/components/util.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var priceDisplay = exports.priceDisplay = function priceDisplay(priceInCents) {
+    return "$ " + priceInCents / 100;
+};
+}, 497, null, "Bakesale/src/components/util.js");
 ;require(50);
 ;require(0);
 //# sourceMappingURL=index.map
