@@ -38,8 +38,16 @@ class DealDetail extends Component {
             <Text style={styles.cause}>{deal.cause.name}</Text>
             <Text style={styles.price}>{priceDisplay(deal.price)}</Text>
           </View>
+           <View style={{ paddingTop: 20 }}>
+            {deal.user && 
+              (<View>
+                <Image source={{uri: deal.user.avatar}} style={styles.avatar}/>
+                <Text>{deal.user.name}</Text>
+              </View>)
+            }
+          </View>
+          <Text>{deal.description}</Text>
         </View>
-        <Text>...</Text>
       </View>
     );
   }
@@ -76,6 +84,10 @@ const styles = StyleSheet.create({
   price: {
     flex: 1,
     textAlign: 'right',
+  },
+  avatar: {
+    width: 60,
+    height: 60,
   }
 })
 
