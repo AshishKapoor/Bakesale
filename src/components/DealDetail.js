@@ -1,12 +1,14 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import {
   View,
   StyleSheet,
   Text,
   Image,
-} from 'react-native';
-import PropTypes from 'prop-types';
-import {priceDisplay} from '../components/util';
+} from 'react-native'
+import PropTypes from 'prop-types'
+
+import {priceDisplay} from '../components/util'
+import ajax from '../ajax'
 
 class DealDetail extends Component {
   static propTypes = {
@@ -15,8 +17,18 @@ class DealDetail extends Component {
   state = {
     deal: this.props.initialDealData,
   }
+
+  async componentDidMount() {
+    console.log(this.state.deal.key)
+    const fullDeal = await ajax.fetchDealDetail(this.state.deal.key)
+    console.log(fullDeal)
+    this.setState({
+      deal: fullDeal,
+    });
+  }
+
   render() {
-    const {deal} = this.state;
+    const {deal} = this.state
     return (
       <View style={styles.deal}>
         <Image source={{uri: deal.media[0]}} style={styles.image}/>
@@ -67,4 +79,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default DealDetail;
+export default DealDetail
