@@ -16,6 +16,15 @@ export default class App extends Component {
   state = {
     deals: [],
     currentDealId: null,
+    dealsFormSearch: [],
+  }
+
+  searchDeals = async (searchTerm) => {
+    let dealsFormSearch = [];
+    if (searchTerm) {
+      dealsFormSearch = await ajax.fetchDealSearchResults(searchTerm)
+    } 
+    this.setState({ dealsFormSearch })
   }
 
   setCurrentDeal = (dealId) => {
@@ -43,11 +52,16 @@ export default class App extends Component {
     if (this.state.currentDealId) {
       return <DealDetail initialDealData={this.currentDeal()} onBack={this.unsetCurrentDeal}/>
     }
-    if (this.state.deals.length > 0) {
+    
+    const dealsToDisplay = this.state.dealsFormSearch.length > 0 
+    ? this.state.dealsFormSearch 
+    : this.state.deals
+
+    if (dealsToDisplay.length > 0) {
       return (
         <View style={[styles.container, styles.main]}>
-          <SearchBar />
-          <DealList deals={this.state.deals} onItemPress={this.setCurrentDeal}/>
+          <SearchBar searchDeals={this.searchDeals} />
+          <DealList deals={dealsToDisplay} onItemPress={this.setCurrentDeal}/>
         </View>
       );
     }
@@ -66,7 +80,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   main: {
-    marginTop: 50
+    marginTop: 30,
   },
   header: {
     fontSize: 40,

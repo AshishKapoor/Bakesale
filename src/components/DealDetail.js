@@ -37,25 +37,27 @@ class DealDetail extends Component {
         <TouchableOpacity onPress={this.props.onBack}>
           <Text style={styles.backButton}>Back</Text>
         </TouchableOpacity>
-      <ScrollView>
-        <Image source={{uri: deal.media[0]}} style={styles.image}/>
-        <View style={styles.info}>
-          <Text style={styles.title}>{deal.title}</Text>
-          <View style={styles.footer}>
-            <Text style={styles.cause}>{deal.cause.name}</Text>
-            <Text style={styles.price}>{priceDisplay(deal.price)}</Text>
-          </View>
-          <View style={{ paddingTop: 20 }}>
-            {deal.user && 
-              (<View>
-                <Image source={{uri: deal.user.avatar}} style={styles.avatar}/>
-                <Text>{deal.user.name}</Text>
-              </View>)
-            }
-            <Text>{deal.description}</Text>
-          </View>
+        <View style={{ paddingTop: 10 }}>
+          <ScrollView>
+            <Image source={{uri: deal.media[0]}} style={styles.image}/>
+            <View style={styles.info}>
+              <Text style={styles.title}>{deal.title}</Text>
+              <View style={styles.footer}>
+                <Text style={styles.cause}>{deal.cause.name}</Text>
+                <Text style={styles.price}>{priceDisplay(deal.price)}</Text>
+              </View>
+              <View style={{ paddingTop: 20 }}>
+                {deal.user && 
+                  (<View>
+                  <Image source={{uri: deal.user.avatar}} style={styles.avatar}/>
+                  <Text>{deal.user.name}</Text>
+                  </View>
+                )}
+                <Text>{deal.description}</Text>
+              </View>
+            </View>
+          </ScrollView>
         </View>
-        </ScrollView>
       </View>
     );
   }
@@ -99,7 +101,7 @@ const styles = StyleSheet.create({
   },
   backButton: {
     marginBottom: 10,
-    fontSize: 15,
+    fontSize: 16,
     color: 'blue'
   }
 })
